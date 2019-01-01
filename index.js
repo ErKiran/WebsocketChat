@@ -11,4 +11,7 @@ const server = app.listen(4000, () => console.log('Server is up and running in p
 const io = socket(server);
 io.on('connection', (socket) => {
     console.log(`Socket Connected,${socket.id}`);
+    socket.on('chat', (data) => {
+        io.sockets.emit('chat', data)
+    })
 })
